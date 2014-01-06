@@ -1,0 +1,68 @@
+.tg-left {
+	text-align: left;
+}
+
+.tg-right {
+	text-align: right;
+}
+
+.tg-center {
+	text-align: center;
+}
+
+.tg-bf {
+	font-weight: bold;
+}
+
+.tg-it {
+	font-style: italic;
+}
+
+.tg-table-plain {
+	border-collapse: collapse;
+	border-spacing: 0;
+	font-size: 100%;
+	font: inherit;
+}
+
+.tg-table-plain td,.tg-table-plain th {
+	border: 1px #555 solid;
+	padding: 10px;
+	vertical-align: top;
+}
+
+td {
+	cursor: pointer;
+	text-align: center;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light",
+		"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+td:hover {
+	background-color: gray
+}
+
+.td-grey {
+	background-color: #E0E0E0
+}
+
+.td-lightgrey {
+	background-color: #F8F8F8
+}
+
+.td-orange {
+	background-color: #FF9900
+}
+
+.display {
+	vertical-align:bottom;
+	text-align:right;
+	background-color: #000000 !important;	
+}
+
+input {
+    outline: none;
+    border: 0px solid;
+    background-color: #000000;
+    color: #FFFFFF;
+}
