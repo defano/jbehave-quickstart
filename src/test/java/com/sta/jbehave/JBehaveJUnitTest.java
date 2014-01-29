@@ -11,35 +11,10 @@ import org.jbehave.core.steps.InstanceStepsFactory;
 import org.junit.Ignore;
 
 @Ignore
-public abstract class JBehaveTest extends JUnitStory {
+public abstract class JBehaveJUnitTest extends JUnitStory {
 
-	private Object steps;
+	public abstract Object getStepsClass();
 
-	/**
-	 * Runs a JBehave steps class as a JUnit test.
-	 * 
-	 * @param steps The steps class to execute.
-	 * @throws Throwable Any throwable resulting from test execuction.
-	 */
-	public void run (Object steps) throws Throwable {
-		this.steps = steps;
-		super.run();
-	}
-	
-	/**
-	 * Don't invoke this from your steps class--use the overloaded run method
-	 * that takes a step class as input, instead.
-	 * 
-	 * This method is invoked implicitly by the superclass as part of a @Test 
-	 * annotated method. Fails if the test has not been initialized with a  
-	 * steps class.
-	 */
-	public void run() throws Throwable {
-		
-		if (steps == null)
-			throw new RuntimeException("Please invoke run() with a steps class object.");
-	}
-	
 	/**
 	 * Returns a default JBehave configuration for each run.
 	 */
@@ -57,7 +32,10 @@ public abstract class JBehaveTest extends JUnitStory {
 			.useStoryLoader(new LoadFromClasspath(this.getClass()))
 			
 			// Produce a standard report on the console and as a text file. 
-			.useStoryReporterBuilder(new StoryReporterBuilder().withDefaultFormats().withFormats(Format.CONSOLE, Format.TXT));
+			.useStoryReporterBuilder(new StoryReporterBuilder()
+				.withDefaultFormats()
+				.withFormats(Format.CONSOLE, Format.TXT)
+			);
 	}
 
 	/**
@@ -66,6 +44,12 @@ public abstract class JBehaveTest extends JUnitStory {
 	 */
 	@Override
 	public InjectableStepsFactory stepsFactory() {
+		
+		Object steps = getStepsClass();
+		
+		if (steps == null)
+			throw new RuntimeException("Steps class is null. Assure that steps class has implemented getStepsClass() and that it returns 'this'.");
+		
 		return new InstanceStepsFactory(configuration(), steps);
 	}
 }

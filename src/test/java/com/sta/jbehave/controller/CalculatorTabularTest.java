@@ -12,10 +12,10 @@ import org.jbehave.core.model.ExamplesTable;
 import org.jbehave.core.steps.Parameters;
 
 import com.sta.jbehave.CalculatorTestUtils;
-import com.sta.jbehave.JBehaveTest;
+import com.sta.jbehave.JBehaveJUnitTest;
 import com.sta.jbehave.calculator.service.CalculatorServiceImpl;
 
-public class CalculatorTabularTest extends JBehaveTest {
+public class CalculatorTabularTest extends JBehaveJUnitTest {
 
 	// Unit under test
 	private CalculatorController calculator;
@@ -23,8 +23,9 @@ public class CalculatorTabularTest extends JBehaveTest {
 	private List<String> sequenceList = new Vector<String>();
 	private List<Double> resultList = new Vector<Double>();
 	
-	public void run() throws Throwable {
-		super.run(this);
+	@Override
+	public Object getStepsClass() {
+		return this;
 	}
 
 	@Given("a calculator in its initial state")

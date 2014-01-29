@@ -8,18 +8,19 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 import com.sta.jbehave.CalculatorTestUtils;
-import com.sta.jbehave.JBehaveTest;
+import com.sta.jbehave.JBehaveJUnitTest;
 import com.sta.jbehave.calculator.model.Calculator;
 import com.sta.jbehave.calculator.model.Operator;
 import com.sta.jbehave.calculator.service.CalculatorServiceImpl;
 
-public class CalculatorTest extends JBehaveTest {
+public class CalculatorTest extends JBehaveJUnitTest {
 
 	private CalculatorController calculator;
 	private Calculator model;
 	
-	public void run() throws Throwable {
-		super.run(this);
+	@Override
+	public Object getStepsClass() {
+		return this;
 	}
 
 	@Given("a calculator in its initial state")

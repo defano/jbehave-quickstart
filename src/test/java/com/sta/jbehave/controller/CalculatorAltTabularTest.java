@@ -9,18 +9,19 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 import com.sta.jbehave.CalculatorTestUtils;
-import com.sta.jbehave.JBehaveTest;
+import com.sta.jbehave.JBehaveJUnitTest;
 import com.sta.jbehave.calculator.service.CalculatorServiceImpl;
 
-public class CalculatorAltTabularTest extends JBehaveTest {
+public class CalculatorAltTabularTest extends JBehaveJUnitTest {
 
 	private CalculatorController calculator;
 	
 	private List<String> sequenceList = new Vector<String>();
 	private List<Double> resultList = new Vector<Double>();
-	
-	public void run() throws Throwable {
-		super.run(this);
+
+	@Override
+	public Object getStepsClass() {
+		return this;
 	}
 	
 	@Given("a calculator in its initial state")
