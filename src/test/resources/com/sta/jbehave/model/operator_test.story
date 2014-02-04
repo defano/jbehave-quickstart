@@ -1,6 +1,7 @@
 !-- Notice that these scenarios provide no "when" clause--stimulus is provided
 !-- during construction.
 Given the ADD operator
+When I do something to it.
 Then isBinary() should return true
 
 Given the SUBTRACT operator

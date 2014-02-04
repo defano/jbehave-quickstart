@@ -8,22 +8,27 @@ import org.jbehave.core.reporters.Format;
 import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
-import org.junit.Ignore;
+import org.junit.runner.RunWith;
+
+import de.codecentric.jbehave.junit.monitoring.JUnitReportingRunner;
 
 /**
- * This class provides "boilerplate" functionality to wrap JBehave in JUnit. Extend a steps class
- * with this abstract base class to make the steps class look like a JUnit. Then, you can execute
- * your steps class using any toolset that supports JUnit (for example, in Eclipse, you could right-click
- * the steps class and choose Run As-->JUnit Test).
+ * This class provides "boilerplate" functionality to wrap JBehave inside JUnit. 
+ * 
+ * Extend a steps class with this abstract base class to make the steps class look like a JUnit. 
+ * Then, you can execute your steps class using any toolset that supports JUnit (for example, in 
+ * Eclipse, you could right-click the steps class and choose Run As-->JUnit Test).
  * 
  * @author mattd
  */
-@Ignore
+@RunWith(JUnitReportingRunner.class)
 public abstract class JBehaveJUnitTest extends JUnitStory {
 
 	/**
-	 * All JBehave steps classes (that is, those which provide methods annotated with given/when/then) must
-	 * implement this method. This enables us--the superclass--to register our subclass as the candidate steps 
+	 * Returns the Java class that implements JBehave steps for this test story.
+	 * 
+	 * All JBehave steps classes extending this class must implement this method. This enables us--the 
+	 * superclass--to get a reference to our subclass so that it can be used as the candidate steps 
 	 * used for behavioral testing. (Essentially, this technique works around Java's inability to reference a 
 	 * subclass from within a superclass.)
 	 * 
@@ -40,12 +45,12 @@ public abstract class JBehaveJUnitTest extends JUnitStory {
 		
 		return new MostUsefulConfiguration()		
 
-			// Load story files (.story) from the classpath using the same 
-			// classloader as this object. The story file should have the same
-			// name (and package location) as the steps file, but replacing
-			// each camel-case with an underscore and using .story as the
-			// file extension. For example, a steps class called MyTestCase.java
-			// would look for the stories in my_test_case.story.
+			/* Load story files (.story) from the classpath using the same 
+			 * classloader as this object. The story file should have the same
+			 * name (and package location) as the steps file, but replacing
+			 * each camel-case with an underscore and using .story as the
+			 * file extension. For example, a steps class called MyTestCase.java
+			 * would look for the stories in my_test_case.story. */
 			.useStoryLoader(new LoadFromClasspath(this.getClass()))
 			
 			// Produce a standard report on the console and as a text file. 

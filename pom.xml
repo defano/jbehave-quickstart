@@ -5,7 +5,7 @@
 	<artifactId>JBehaveQuickstart</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<name>JBehave Calculator Example</name>
 	<url>http://github.com/defano</url>
 
@@ -24,6 +24,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>jbehave-junit-runner</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.jbehave</groupId>
 			<artifactId>jbehave-core</artifactId>
 			<version>${jbehave.version}</version>
@@ -35,13 +41,13 @@
 			<artifactId>spring-core</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
