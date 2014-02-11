@@ -12,11 +12,6 @@ public class OperatorTest extends JBehaveJUnitTest {
 
 	private Operator operatorUnderTest;
 	
-	@Override
-	public Object getStepsClass() {
-		return this;
-	}
-
 	@Given("the $operatorName operator")
 	public void given (String operatorName) {
 		operatorUnderTest = Operator.valueOf(Operator.class, operatorName);

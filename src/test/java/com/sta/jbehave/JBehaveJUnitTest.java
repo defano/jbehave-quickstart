@@ -25,18 +25,6 @@ import de.codecentric.jbehave.junit.monitoring.JUnitReportingRunner;
 public abstract class JBehaveJUnitTest extends JUnitStory {
 
 	/**
-	 * Returns the Java class that implements JBehave steps for this test story.
-	 * 
-	 * All JBehave steps classes extending this class must implement this method. This enables us--the 
-	 * superclass--to get a reference to our subclass so that it can be used as the candidate steps 
-	 * used for behavioral testing. (Essentially, this technique works around Java's inability to reference a 
-	 * subclass from within a superclass.)
-	 * 
-	 * @return An instance of the class implementing the given/when/then methods for a story; typically, 'this'.	 
-	 */	
-	public abstract Object getStepsClass();
-
-	/**
 	 * Returns a default JBehave configuration (this configuration will apply to all steps classes
 	 * that extend us).
 	 */
@@ -64,14 +52,7 @@ public abstract class JBehaveJUnitTest extends JUnitStory {
 	 * Returns a factory that provides a configuration (above) and one or more steps files. 
 	 */
 	@Override
-	public InjectableStepsFactory stepsFactory() {
-		
-		// Ask the subclass for the candidate steps object--we're assuming the subclass *is* the candidate steps class.
-		Object steps = getStepsClass();
-		
-		if (steps == null)
-			throw new RuntimeException("Steps class is null. Assure that steps class has implemented getStepsClass() and that it returns 'this'.");
-		
-		return new InstanceStepsFactory(configuration(), steps);
+	public InjectableStepsFactory stepsFactory() {		
+		return new InstanceStepsFactory(configuration(), this);
 	}
 }

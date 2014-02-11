@@ -18,11 +18,6 @@ public class CalculatorTest extends JBehaveJUnitTest {
 	private CalculatorController calculator;
 	private Calculator model;
 	
-	@Override
-	public Object getStepsClass() {
-		return this;
-	}
-
 	@Given("a calculator in its initial state")
 	public void initialize() {
 		calculator = new CalculatorController();

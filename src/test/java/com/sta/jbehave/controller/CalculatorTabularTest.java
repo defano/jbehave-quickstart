@@ -23,11 +23,6 @@ public class CalculatorTabularTest extends JBehaveJUnitTest {
 	private List<String> sequenceList = new Vector<String>();
 	private List<Double> resultList = new Vector<Double>();
 	
-	@Override
-	public Object getStepsClass() {
-		return this;
-	}
-
 	@Given("a calculator in its initial state")
 	public void setup () {
 		calculator = new CalculatorController();
